@@ -5,7 +5,7 @@ A bilingual student questionnaire and teacher/admin demo with class-scoped team 
 - **Role:** Solo developer
 - **Period:** 2024–2026; demo updated 17 November 2026
 - **Stack:** Astro, React, TypeScript, Bun, Astro DB, SQLite, Tailwind CSS, shadcn/ui, Lucia
-- **Availability:** Demo verified locally; public hosting is being prepared. The screenshots show the current demo, not a live deployment.
+- **Public demo:** [Try Actiontypes](https://demo.jordy.zip/sd/wp-008/) — resettable browser-local version, verified 17 November 2026. The Astro/SQL application remains a separate server reference.
 
 ![Actiontypes demo entry with student, teacher and admin experiences and an EN/NL toggle](images/demo-roles.png)
 
@@ -25,11 +25,11 @@ The demo provides English and Dutch interfaces and three entry points:
 - **Teacher:** manages class 1A, including student records, answers, resets, teams and assignment.
 - **Admin:** uses the same management workflows across all five classes.
 
-The role chooser intentionally lets visitors try each demo role. It creates real sessions for server-selected demo accounts; it is not an access restriction on who may try the admin experience. Only fictional records are used.
+Every visitor can try all three roles. The public demo labels them as simulations: it has no server authentication or database. A deterministic fictional seed becomes the current tab's own copy, with edits and questionnaire progress saved in sessionStorage. Reloading keeps those changes; Reset demo restores the seed in that tab. Other visitors are unaffected. If storage is blocked, the demo works in memory and explains that refreshing discards changes.
 
 ![Teacher student-management screen showing fictional class 1A records](images/students.png)
 
-The server enforces the teacher's class boundary, including direct API requests. Student sessions cannot use staff APIs. The original login forms remain available, with centered cards and demo autofill buttons. Shared shadcn components keep the new controls consistent with the existing interface.
+The public role simulation shows teachers one class and admins all five. Client-side checks help reproduce the workflow; they are not security controls. The separate Astro server reference enforces real sessions, staff permissions and class ownership in its API. The original login forms remain available as a simulation, with centered cards and demo autofill buttons. Shared shadcn components keep the controls consistent with the existing interface.
 
 ## Team assignment and management
 
@@ -49,9 +49,9 @@ The shared qualities/radar feature is also applied to the original Actiontypes s
 
 ## Fixes and verification
 
-The demo's result calculation now counts each opposing pair separately. The former method of choosing the four most frequent letters could pick both sides of a pair while omitting another. Questionnaire writes validate the next question and its statement pair; a database unique index rejects concurrent duplicate answers.
+The demo's result calculation now counts each opposing pair separately. The former method of choosing the four most frequent letters could pick both sides of a pair while omitting another. Both versions validate question order and statement pairs. In the server reference, a database unique index also rejects concurrent duplicate answers.
 
-Local checks cover authorization and class boundaries, team capacity and CRUD, preservation of answers, missing-team creation, deterministic balancing, derived insights, all three demo roles and the full questionnaire. The demo has 17 passing unit/API cases, 104 responsive browser assertions at 320–1440px, and EN/NL teacher/admin management-flow checks. These are local checks, not a live hosting verification.
+Verification includes 20 passing unit/API/local-store cases and 104 responsive checks on the server reference. The public static build was also tested locally and at its hosted URL: both languages, all roles, the complete questionnaire, student/team edits, assignment, export, reload, independent tabs, reset and storage fallback, with 24 layout checks at 320–1440px. Those workflows issue no website POST, API or external requests and produced no browser errors. The screenshots show the actual static build with fictional records.
 
 ## Scope and next questions
 
@@ -61,8 +61,8 @@ Making a team look balanced in code does not establish that its members work bet
 
 ## Hosting status
 
-The local demo is a server-rendered application with a writable database, not a static export. Public availability at `demo.jordy.zip` is not yet verified. Deployment needs compatible hosted SQL storage, server-only credentials, a safe fictional-data lifecycle and routing that preserves the existing demos. No paid plan or service has been enabled.
+The public demo is a static React/Vite build under the existing demo catalog. It reuses the application's components, translations, assignment algorithm and insight model, with an explicit local data transport and hash navigation. No hosted database, new backend, paid plan or service was enabled. The original Astro/Lucia/SQLite application and its API tests remain available separately; publishing the static build does not deploy that server.
 
-The proposed next step is a browser-local public version with resettable fictional data and tab-local changes, avoiding a hosted database. That conversion is not implemented yet. A shared Convex backend for multiple demos is a later option; no Convex service has been connected.
+A shared Convex backend for multiple demos is a later option; no Convex service has been connected. Statistics and performance-history data remain outside this demo's scope.
 
 [Back to the project list](../../README.md)
