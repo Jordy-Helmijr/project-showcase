@@ -41,9 +41,9 @@ Automatic assignment runs within a class. It spreads the existing four heuristic
 
 ## What the charts and qualities mean
 
-The radar now shows actual preference shares among members with valid types. Its purpose is to showcase the balance of the team; it does not invent preference-intensity scores.
+The radar shows actual preference shares among members with valid types. Its purpose is to showcase team balance. Colored student layers match their member cards: hovering either highlights the other, and keyboard focus on a card highlights the student's chart profile. The dashed aggregate shape stays unchanged; there are no random preference-intensity scores.
 
-The qualities panel derives represented strengths and potential gaps from that composition. It shows the supporting counts and a practical discussion prompt for an underrepresented preference. Missing or invalid types are excluded, and coverage is shown. The rules are documented project heuristics, not validated psychometric thresholds or evidence of a person's skills. This follows the distinction between preferences and abilities in [the Myers & Briggs Foundation's guidance](https://www.myersbriggs.org/type-in-my-life/personality-type-and-organizations/).
+The qualities panel derives strengths and potential gaps from that composition, with compact color-coded `+`/`++`/`+++` and `-`/`--`/`---` grades for quick scanning. Supporting counts are available on hover. Missing or invalid types are excluded. The rules are documented project heuristics, not validated psychometric thresholds or evidence of a person's skills. This follows the distinction between preferences and abilities in [the Myers & Briggs Foundation's guidance](https://www.myersbriggs.org/type-in-my-life/personality-type-and-organizations/).
 
 The shared qualities/radar feature is also applied to the original Actiontypes source copy. The demo's connected management APIs and role-entry flow remain part of the separate demo version; the original application's database was not modified.
 
